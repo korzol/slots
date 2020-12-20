@@ -10,3 +10,4 @@
 phpstan.neon
 composer.phar
 vendor
+config.json
