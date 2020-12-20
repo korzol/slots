@@ -1,0 +1,12 @@
+###> IDE files ###
+.idea
+###< IDE files ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
+phpstan.neon
+composer.phar
+vendor

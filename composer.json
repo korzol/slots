@@ -1,0 +1,24 @@
+{
+    "name": "coderaiser/www.dopamine",
+    "description": "Dopamine test job",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "^9.5",
+        "phpstan/phpstan": "^0.12.63",
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.17"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CodeRaiser",
+            "email": "code.geeks1@gmail.com"
+        }
+    ]
+}
