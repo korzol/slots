@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Config;
 
+use App\Config\Decoder\Decoder;
+use App\Config\Reader\Reader;
 use Exception;
 
 class Config implements ConfigInterface
@@ -33,10 +35,13 @@ class Config implements ConfigInterface
      */
     public static function create(string $file): self
     {
-        $reader = new Reader\Reader($file);
+        $reader = new Reader($file);
+        $decoder = new Decoder();
 
         try {
-            $config = $reader->read();
+            $configJson = $reader->read();
+
+            $config = $decoder->decode($configJson);
 
             return new self(
                 $config['tiles'],

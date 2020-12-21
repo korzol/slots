@@ -8,5 +8,5 @@ interface ReaderInterface
     /**
      * @return array<mixed>
      */
-    public function read(): array;
+    public function read(): string;
 }
