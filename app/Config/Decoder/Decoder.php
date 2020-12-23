@@ -9,7 +9,12 @@ class Decoder
 {
     /**
      * @param string $json
-     * @return array{tiles: array<string, int>, reels: array<int>, lines: array<int>, pays: array<int>}
+     * @return array{tiles: array{
+     *     array{
+     *         id: int,
+     *         type: string
+     *     }
+     * }, reels: array<int, array<int>>, lines: array<int>, pays: array<int>}
      * @throws InvalidArgumentException
      */
     public static function decode(string $json): array

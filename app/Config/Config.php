@@ -10,12 +10,17 @@ use Exception;
 class Config implements ConfigInterface
 {
     /**
-     * @var array<string, int>
+     * @var array{
+     *     array{
+     *         id: int,
+     *         type: string
+     *     }
+     * }
      */
     private array $tiles;
 
     /**
-     * @var array<int>
+     * @var array<int, array<int>>
      */
     private array $reels;
 
@@ -45,7 +50,7 @@ class Config implements ConfigInterface
 
             return new self(
                 $config['tiles'],
-                $config['reels'],
+                $config['reels'][0],
                 $config['lines'],
                 $config['pays']
             );
@@ -56,7 +61,12 @@ class Config implements ConfigInterface
 
     /**
      * Config constructor.
-     * @param array<string, int> $tiles
+     * @param array{
+     *     array{
+     *         id: int,
+     *         type: string
+     *     }
+     * } $tiles
      * @param array<int> $reels
      * @param array<int> $lines
      * @param array<int> $pays

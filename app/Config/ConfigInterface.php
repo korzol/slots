@@ -6,12 +6,17 @@ namespace App\Config;
 interface ConfigInterface
 {
     /**
-     * @return array<string, int>
+     * @return array{
+     *     array{
+     *         id: int,
+     *         type: string
+     *     }
+     * }
      */
     public function getTiles(): array;
 
     /**
-     * @return array<int>
+     * @return array<int, array<int>>
      */
     public function getReels(): array;
 
