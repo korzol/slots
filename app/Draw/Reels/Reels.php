@@ -59,7 +59,7 @@ class Reels
      */
     public function spin(): array
     {
-        $tile = new Tile($this->tiles, $this->reels);
+        $tile = new Tile($this->tiles);
         $reels = new Spinner($this->reels);
 
         try {
