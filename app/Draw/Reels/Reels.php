@@ -67,6 +67,7 @@ class Reels
 
             return [
                 'mysterySymbols' => [
+                    'mysteryTile' => $tile->getMysteryTile(),
                     'toTile' => $tile->randomTile(),
                     'tiles' => $tile->findMysteryTilesInArray($reelsBuffer)
                 ],
