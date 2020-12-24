@@ -79,9 +79,10 @@ class Tile
         // TODO: probably better refactor it sometime later
         try {
             $mysteryTilesPositions = [];
+            $mysteryTile = $this->getMysteryTile();
 
             foreach ($reelsBuffer as $reel => $sequence) {
-                foreach (array_keys($sequence, $this->getMysteryTile()) as $index) {
+                foreach (array_keys($sequence, $mysteryTile) as $index) {
                     $mysteryTilesPositions[] = [
                         'reel' => $reel,
                         'index' => $index,
