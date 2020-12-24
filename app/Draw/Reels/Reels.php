@@ -43,6 +43,7 @@ class Reels
     /**
      * @return array{
      *     mysterySymbols: array{
+     *         mysteryTile: int,
      *         toTile: int,
      *         tiles?: array{
      *             reel?: int,

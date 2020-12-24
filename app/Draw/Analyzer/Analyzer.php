@@ -60,6 +60,12 @@ class Analyzer
         $this->lines = $lines;
     }
 
+    /**
+     * @return array{
+     *     updatedReelsBuffer: array<int, array<int>>,
+     *     matchedLines: array{'realized_lines': array<int, array{coords?: array{reel?: int, tile?: int}, value?: int}>}
+     * }
+     */
     public function analyze(): array
     {
         $reelsBuffer = Preparer::replaceMysteryTile(
@@ -68,33 +74,15 @@ class Analyzer
             $this->reelsBuffer['mysterySymbols']['toTile']
         );
 
-        //print_r($reelsBuffer); exit();
-
         $collection = Collector::collect($this->lines, $reelsBuffer);
         echo "Collection ===".PHP_EOL;
 
         $finder = new Finder($collection);
-        $finder->find();
+        $matchedLines = $finder->find();
 
-//print_r($collection); exit();
-
-        return $reelsBuffer;
-    }
-
-    public function replaceMysteryTile(): array
-    {
-        return [];
-    }
-
-    public function goThroughLines()
-    {
-        // collect tiles from reelsBuffer according to predefined lines
-        return[];
-    }
-
-    public function findSequences(): array
-    {
-        // @param is output from goThroughLines
-        // find out if there is any sequence from 3 or more tiles
+        return [
+            'updatedReelsBuffer' => $reelsBuffer,
+            'matchedLines' => $matchedLines,
+        ];
     }
 }
