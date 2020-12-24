@@ -25,7 +25,7 @@ class Config implements ConfigInterface
     private array $reels;
 
     /**
-     * @var array<int>
+     * @var array<array<int>>
      */
     private array $lines;
 
@@ -68,7 +68,7 @@ class Config implements ConfigInterface
      *     }
      * } $tiles
      * @param array<int> $reels
-     * @param array<int> $lines
+     * @param array<array<int>> $lines
      * @param array<int> $pays
      */
     public function __construct(array $tiles, array $reels, array $lines, array $pays)
