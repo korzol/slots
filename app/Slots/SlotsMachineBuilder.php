@@ -9,7 +9,7 @@ use App\Slots\Reels\Reels;
 use App\Slots\Analyzer\Analyzer;
 use App\Slots\Reels\ReelsInterface;
 
-class SlotsMachineMachineBuilder implements SlotsMachineBuilderInterface
+class SlotsMachineBuilder implements SlotsMachineBuilderInterface
 {
     /**
      * @var SlotsMachineInterface
@@ -22,7 +22,7 @@ class SlotsMachineMachineBuilder implements SlotsMachineBuilderInterface
     private ConfigInterface $config;
 
     /**
-     * SlotsMachineMachineBuilder constructor.
+     * SlotsMachineBuilder constructor.
      * @param ConfigInterface $config
      * @param SlotsMachineInterface $slotsMachine
      */

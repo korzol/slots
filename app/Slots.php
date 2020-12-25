@@ -6,7 +6,7 @@ namespace App;
 use App\Config\ConfigInterface;
 use App\Slots\SlotsMachine;
 use App\Slots\SlotsMachineInterface;
-use App\Slots\SlotsMachineMachineBuilder;
+use App\Slots\SlotsMachineBuilder;
 
 class Slots
 {
@@ -29,7 +29,7 @@ class Slots
      */
     public function spin(): SlotsMachineInterface
     {
-        $slotsMachineBuilder = new SlotsMachineMachineBuilder($this->config, new SlotsMachine());
+        $slotsMachineBuilder = new SlotsMachineBuilder($this->config, new SlotsMachine());
         $slotsMachineBuilder->pullOut();
 
         return $slotsMachineBuilder->getSlotsMachine();
