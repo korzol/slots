@@ -7,7 +7,7 @@ use App\Draw\Analyzer\Collector\Collector;
 use App\Draw\Analyzer\Finder\Finder;
 use App\Draw\Analyzer\Preparer\Preparer;
 
-class Analyzer
+class Analyzer implements AnalyzerInterface
 {
     /**
      * @var array{
@@ -61,10 +61,7 @@ class Analyzer
     }
 
     /**
-     * @return array{
-     *     updatedReelsBuffer: array<int, array<int>>,
-     *     matchedLines: array{'realized_lines': array<int, array{coords?: array{reel?: int, tile?: int}, value?: int}>}
-     * }
+     * @inheritDoc
      */
     public function analyze(): array
     {
