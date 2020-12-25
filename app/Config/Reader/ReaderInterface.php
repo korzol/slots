@@ -6,7 +6,7 @@ namespace App\Config\Reader;
 interface ReaderInterface
 {
     /**
-     * @return array<mixed>
+     * @return string
      */
     public function read(): string;
 }

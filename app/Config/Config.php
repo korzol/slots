@@ -67,7 +67,7 @@ class Config implements ConfigInterface
      *         type: string
      *     }
      * } $tiles
-     * @param array<int> $reels
+     * @param array<int, array<int>> $reels
      * @param array<array<int>> $lines
      * @param array<int> $pays
      */

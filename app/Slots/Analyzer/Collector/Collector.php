@@ -5,21 +5,6 @@ namespace App\Slots\Analyzer\Collector;
 
 class Collector
 {
-    /*
-     * @param array<array<int>> $lines
-     * @param array<int, array<int>> $reelsBuffer
-     * @return array{
-     *     array{
-     *         int: array{
-     *             coords: array{
-     *                 reel: int,
-     *                 tile: int
-     *             },
-     *             value: int
-     *         }
-     *     }
-     * }
-     */
     /**
      * @param array<array<int>> $lines
      * @param array<int, array<int>> $reelsBuffer
