@@ -7,7 +7,7 @@ use App\Draw\Reels\Spinner\Spinner;
 use App\Draw\Reels\Tiles\Tile;
 use Exception;
 
-class Reels
+class Reels implements ReelsInterface
 {
     /**
      * @var array{
@@ -41,22 +41,7 @@ class Reels
     }
 
     /**
-     * @return array{
-     *     mysterySymbols: array{
-     *         mysteryTile: int,
-     *         toTile: int,
-     *         tiles?: array{
-     *             reel?: int,
-     *             index?: int,
-     *             sequence?: array{
-     *                 int,
-     *                 int,
-     *                 int
-     *             }
-     *         }
-     *     },
-     *     reelsBuffer: array<int, array<int>>
-     * }
+     * @inheritDoc
      */
     public function spin(): array
     {
