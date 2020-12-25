@@ -3,10 +3,8 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Config\Config;
 use App\Config\ConfigInterface;
-use App\Draw\Draw;
-use App\Draw\Reels\Reels;
+use App\Slots\SlotsBuilder;
 
 class Slots
 {
@@ -29,9 +27,9 @@ class Slots
      */
     public function spin(): array
     {
-        $reels = new Draw($this->config);
+        $reels = new SlotsBuilder($this->config);
         $reels->pullOut();
-        print_r($this->config->getTiles());
-        return $this->config->getTiles();
+
+        return $reels->getReport();
     }
 }
