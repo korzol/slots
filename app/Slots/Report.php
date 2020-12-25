@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Slots;
 
+use Exception;
+
 class Report
 {
     /**
@@ -126,4 +128,18 @@ class Report
         return $this->reelsBuffer + $this->analyzeReport;
     }
 
+    /**
+     * @return string
+     * @throws Exception
+     */
+    public function getJsonReport(): string
+    {
+         $report = json_encode($this->reelsBuffer + $this->analyzeReport);
+         if ($report)
+         {
+             return $report;
+         }
+
+         throw new Exception("Can not generate JSON report");
+    }
 }
