@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace App;
 
 use App\Config\ConfigInterface;
-use App\Slots\SlotsBuilder;
+use App\Slots\SlotsMachine;
+use App\Slots\SlotsMachineInterface;
+use App\Slots\SlotsMachineMachineBuilder;
 
 class Slots
 {
@@ -23,13 +25,13 @@ class Slots
     }
 
     /**
-     * @return array<mixed>
+     * @return SlotsMachineInterface
      */
-    public function spin(): array
+    public function spin(): SlotsMachineInterface
     {
-        $reels = new SlotsBuilder($this->config);
-        $reels->pullOut();
+        $slotsMachineBuilder = new SlotsMachineMachineBuilder($this->config, new SlotsMachine());
+        $slotsMachineBuilder->pullOut();
 
-        return $reels->getReport();
+        return $slotsMachineBuilder->getSlotsMachine();
     }
 }

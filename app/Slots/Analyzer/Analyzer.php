@@ -72,7 +72,6 @@ class Analyzer implements AnalyzerInterface
         );
 
         $collection = Collector::collect($this->lines, $reelsBuffer);
-        echo "Collection ===".PHP_EOL;
 
         $finder = new Finder($collection);
         $matchedLines = $finder->find();
