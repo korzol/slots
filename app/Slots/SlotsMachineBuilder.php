@@ -5,6 +5,8 @@ namespace App\Slots;
 
 use App\Config\ConfigInterface;
 use App\Slots\Analyzer\AnalyzerInterface;
+use App\Slots\Finance\Finance;
+use App\Slots\Finance\FinanceInterface;
 use App\Slots\Reels\Reels;
 use App\Slots\Analyzer\Analyzer;
 use App\Slots\Reels\ReelsInterface;
@@ -48,6 +50,11 @@ class SlotsMachineBuilder implements SlotsMachineBuilderInterface
         $this->slotsMachine->setAnalyzeReport($analyzer->analyze());
     }
 
+    public function analyzeFinance(FinanceInterface $finance): void
+    {
+        $this->slotsMachine->setFinanceReport($finance->conclusion());
+    }
+
     public function pullOut(): void
     {
         $reels = new Reels($this->config->getTiles(), $this->config->getReels());
@@ -55,6 +62,9 @@ class SlotsMachineBuilder implements SlotsMachineBuilderInterface
 
         $analyzer = new Analyzer($this->slotsMachine->getReelsBuffer(), $this->config->getLines());
         $this->analyzeTheReels($analyzer);
+
+        $finance = new Finance($this->config->getPays(), $this->slotsMachine->getAnalyzeReport());
+        $this->analyzeFinance($finance);
     }
 
     /**

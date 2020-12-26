@@ -28,10 +28,18 @@ interface SlotsMachineInterface
     /**
      * @param array{
      *     updatedReelsBuffer: array<int, array<int>>,
-     *     matchedLines: array{'realized_lines': array<int, array{coords?: array{reel?: int, tile?: int}, value?: int}>}
+     *     matchedLines: array{'realized_lines': array<int, array<int, array{coords?: array{reel?: int, tile?: int}, value: int}>>}
      * } $analyzeReport
      */
     public function setAnalyzeReport(array $analyzeReport): void;
+
+    /**
+     * @param array{
+     *     analysis: array<int, array{line: array{id: int, tile: int, count: int, ratio: int}}>,
+     *     profit: int
+     * } $financeReport
+     */
+    public function setFinanceReport(array $financeReport): void;
 
     /**
      * @return array{
@@ -56,10 +64,18 @@ interface SlotsMachineInterface
     /**
      * @return array{
      *     updatedReelsBuffer: array<int, array<int>>,
-     *     matchedLines: array{'realized_lines': array<int, array{coords?: array{reel?: int, tile?: int}, value?: int}>}
+     *     matchedLines: array{'realized_lines': array<int, array<int, array{coords?: array{reel?: int, tile?: int}, value: int}>>}
      * }
      */
     public function getAnalyzeReport(): array;
+
+    /**
+     * @return array{
+     *     analysis: array<int, array{line: array{id: int, tile: int, count: int, ratio: int}}>,
+     *     profit: int
+     * } $financeReport
+     */
+    public function getFinanceReport(): array;
 
     /**
      * @return array{
@@ -78,7 +94,9 @@ interface SlotsMachineInterface
      *     },
      *     reelsBuffer: array<int, array<int>>,
      *     updatedReelsBuffer: array<int, array<int>>,
-     *     matchedLines: array{'realized_lines': array<int, array{coords?: array{reel?: int, tile?: int}, value?: int}>}
+     *     matchedLines: array{'realized_lines': array<int, array<int, array{coords?: array{reel?: int, tile?: int}, value: int}>>},
+     *     analysis: array<int, array{line: array{id: int, tile: int, count: int, ratio: int}}>,
+     *     profit: int
      * }
      */
     public function getReport(): array;

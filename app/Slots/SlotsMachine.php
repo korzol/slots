@@ -30,10 +30,18 @@ class SlotsMachine implements SlotsMachineInterface
     /**
      * @var array{
      *     updatedReelsBuffer: array<int, array<int>>,
-     *     matchedLines: array{'realized_lines': array<int, array{coords?: array{reel?: int, tile?: int}, value?: int}>}
+     *     matchedLines: array{'realized_lines': array<int, array<int, array{coords?: array{reel?: int, tile?: int}, value: int}>>}
      * }
      */
     private array $analyzeReport;
+
+    /**
+     * @var array{
+     *     analysis: array<int, array{line: array{id: int, tile: int, count: int, ratio: int}}>,
+     *     profit: int
+     * }
+     */
+    private array $financeReport;
 
     /**
      * @inheritDoc
@@ -49,6 +57,14 @@ class SlotsMachine implements SlotsMachineInterface
     public function setAnalyzeReport(array $analyzeReport): void
     {
         $this->analyzeReport = $analyzeReport;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setFinanceReport(array $financeReport): void
+    {
+       $this->financeReport = $financeReport;
     }
 
     /**
@@ -70,9 +86,17 @@ class SlotsMachine implements SlotsMachineInterface
     /**
      * @inheritDoc
      */
+    public function getFinanceReport(): array
+    {
+        return $this->financeReport;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getReport(): array
     {
-        return $this->reelsBuffer + $this->analyzeReport;
+        return $this->reelsBuffer + $this->analyzeReport + $this->financeReport;
     }
 
     /**
@@ -81,7 +105,7 @@ class SlotsMachine implements SlotsMachineInterface
      */
     public function getJsonReport(): string
     {
-         $report = json_encode($this->reelsBuffer + $this->analyzeReport);
+         $report = json_encode($this->reelsBuffer + $this->analyzeReport + $this->financeReport);
          if ($report)
          {
              return $report;
