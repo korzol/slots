@@ -14,7 +14,7 @@ class Decoder
      *         id: int,
      *         type: string
      *     }
-     * }, reels: array<array<int, array<int>>>, lines: array<array<int>>, pays: array<int>}
+     * }, reels: array<array<int, array<int>>>, lines: array<array<int>>, pays: array<int, array<int>>}
      * @throws InvalidArgumentException
      */
     public static function decode(string $json): array

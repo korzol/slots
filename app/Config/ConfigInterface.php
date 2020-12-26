@@ -26,7 +26,7 @@ interface ConfigInterface
     public function getLines(): array;
 
     /**
-     * @return array<int>
+     * @return array<int, array<int>>
      */
     public function getPays(): array;
 }
