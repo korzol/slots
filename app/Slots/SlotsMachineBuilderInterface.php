@@ -5,5 +5,5 @@ namespace App\Slots;
 
 interface SlotsMachineBuilderInterface
 {
-    public function pullOut(): void;
+    public function build(): void;
 }

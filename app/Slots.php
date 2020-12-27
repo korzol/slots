@@ -30,7 +30,7 @@ class Slots
     public function spin(): SlotsMachineInterface
     {
         $slotsMachineBuilder = new SlotsMachineBuilder($this->config, new SlotsMachine());
-        $slotsMachineBuilder->pullOut();
+        $slotsMachineBuilder->build();
 
         return $slotsMachineBuilder->getSlotsMachine();
     }

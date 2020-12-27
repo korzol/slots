@@ -55,7 +55,7 @@ class SlotsMachineBuilder implements SlotsMachineBuilderInterface
         $this->slotsMachine->setFinanceReport($finance->conclusion());
     }
 
-    public function pullOut(): void
+    public function build(): void
     {
         $reels = new Reels($this->config->getTiles(), $this->config->getReels());
         $this->spinTheReels($reels);
