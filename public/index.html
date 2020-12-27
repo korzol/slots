@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Slots Game</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="slots" class="float-left col-lg-3 col-sm-12">
+                <div class="float-left" id="reel1">
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile11"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile12"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile13"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                </div>
+                <div class="bd-example bd-example-border-utils float-left" id="reel2">
+                    <div class="">
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile21"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile22"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile23"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                </div>
+                <div class="bd-example bd-example-border-utils float-left" id="reel3">
+                    <div class="">
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile31"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile32"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile33"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                </div>
+                <div class="bd-example bd-example-border-utils float-left" id="reel4">
+                    <div class="">
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile41"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile42"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile43"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                </div>
+                <div class="bd-example bd-example-border-utils float-left" id="reel5">
+                    <div class="">
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile51"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile52"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                id="tile53"
+                                disabled="disabled"
+                        ></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="float-left col-lg-3 col-sm-12">
+                <div class="row">
+                    Stake: <span id="stake">1</span>
+                </div>
+                <div class="row">
+                    Paylines: <span id="paylines"></span>
+                </div>
+                <div class="row">
+                    Profit: <span id="profit"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-2">
+            <div class="float-left">
+                <button type="button" class="btn btn-primary" id="spin">Spin the reels!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function (){
+            requestData();
+        });
+
+        $('#spin').on('click', function(){
+            $('.btn-sm').each(function () {
+                $(this).removeClass('btn-success').removeClass('btn-primary').addClass('btn-outline-secondary');
+            });
+            $(this).attr('disabled', true);
+            requestData();
+            $(this).removeAttr("disabled");
+        });
+
+        function requestData()
+        {
+            $.get('/game.php')
+                .done(function(data){
+                    // loop through reelsBuffer
+                    data['reelsBuffer'].forEach(function(reel, index){
+                        reel.forEach(function(tile, i){
+                            var r = index + 1;
+                            var t = i + 1;
+                            $('#tile'+r+t).text(tile);
+                        });
+                    });
+
+                    replaceMysterySymbols(data, );
+                })
+                .fail(function(){
+                    alert("Something went wrong. Could not load data.");
+                });
+        }
+
+        function replaceMysterySymbols(data)
+        {
+            var toTile = data['mysterySymbols'].toTile;
+            var tiles = data['mysterySymbols'].tiles;
+
+            if (tiles.length > 0) {
+                tiles.forEach(function (tile) {
+                    var r = tile.reel + 1;
+                    var t = tile.index + 1;
+
+                    $('#tile' + r + t).removeClass('btn-outline-secondary').addClass('btn-success');
+                });
+
+                setTimeout(function () {
+                    $('.btn-success').each(function () {
+                        $(this).text(toTile);
+                        $(this).removeClass('btn-success').addClass('btn-outline-secondary');
+                    });
+                    outlineRealizedLines(data);
+                }, 1000);
+            }
+            else
+            {
+                outlineRealizedLines(data, 100);
+            }
+        }
+
+        const timer = ms => new Promise(res => setTimeout(res, ms))
+
+        function updateStats(data)
+        {
+            var realizedLines = data['matchedLines']['realized_lines'];
+            $('#paylines').text(Object.keys(realizedLines).length);
+            var profit = 'Loss';
+            if(data.profit > 0)
+            {
+                profit = data.profit;
+            }
+            $('#profit').text(profit);
+        }
+
+        async function outlineRealizedLines(data, count)
+        {
+            updateStats(data);
+            var realizedLines = data['matchedLines']['realized_lines'];
+
+            if (Object.keys(realizedLines).length > 0)
+            {
+                var i = 0;
+                for (const [lineId, line] of Object.entries(realizedLines)) {
+
+                    $('.btn-sm').each(function () {
+                        $(this).removeClass('btn-primary').addClass('btn-outline-secondary');
+                    });
+
+                    for (const [index, tile] of Object.entries(line)) {
+                        var r = tile.coords.reel + 1;
+                        var t = tile.coords.tile + 1;
+                        console.log('#tile'+r+t);
+                        $('#tile'+r+t).removeClass('btn-outline-secondary').addClass('btn-primary');
+                    }
+
+                    await timer(2000);
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

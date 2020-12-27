@@ -23,7 +23,7 @@ class Finder
     }
 
     /**
-     * @return array{'realized_lines': array<array<int, array{coords?: array{reel?: int, tile?: int}, value?: int}>>}
+     * @return array{'realized_lines': array<array<int, array{coords?: array{reel?: int, tile?: int}, value: int}>>}
      */
     public function find(): array
     {
