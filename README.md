@@ -6,7 +6,7 @@ It's test job
 [Demo](https://www.slots.webinnolab.com/)
 
 Installation: 
-1. Clone the sitory
+1. Clone the repository
 
 2. Rename config.json.dist to config.json
 ```
