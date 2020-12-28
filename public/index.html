@@ -183,6 +183,12 @@
             $('.btn-sm').each(function () {
                 $(this).removeClass('btn-success').removeClass('btn-primary').addClass('btn-outline-secondary');
             });
+
+            clearInterval(interval);
+
+            $('#paylines').text('');
+            $('#profit').text('');
+
             $(this).attr('disabled', true);
             requestData();
             $(this).removeAttr("disabled");
@@ -201,7 +207,7 @@
                         });
                     });
 
-                    replaceMysterySymbols(data, );
+                    replaceMysterySymbols(data);
                 })
                 .fail(function(){
                     alert("Something went wrong. Could not load data.");
@@ -231,12 +237,10 @@
             }
             else
             {
-                outlineRealizedLines(data, 100);
+                outlineRealizedLines(data);
             }
         }
-
-        const timer = ms => new Promise(res => setTimeout(res, ms))
-
+        
         function updateStats(data)
         {
             var realizedLines = data['matchedLines']['realized_lines'];
@@ -249,29 +253,62 @@
             $('#profit').text(profit);
         }
 
-        async function outlineRealizedLines(data, count)
+        var interval;
+
+        function outlineRealizedLines(data)
         {
             updateStats(data);
+
             var realizedLines = data['matchedLines']['realized_lines'];
 
-            if (Object.keys(realizedLines).length > 0)
-            {
-                var i = 0;
-                for (const [lineId, line] of Object.entries(realizedLines)) {
-
+            if(Object.keys(realizedLines).length > 0) {
+                var lines = new Slider(realizedLines);
+                interval = setInterval(function () {
                     $('.btn-sm').each(function () {
                         $(this).removeClass('btn-primary').addClass('btn-outline-secondary');
                     });
 
+                    var line = lines.nextElement();
                     for (const [index, tile] of Object.entries(line)) {
                         var r = tile.coords.reel + 1;
                         var t = tile.coords.tile + 1;
-                        console.log('#tile'+r+t);
+
                         $('#tile'+r+t).removeClass('btn-outline-secondary').addClass('btn-primary');
                     }
+                }, 1000);
+            }
+        }
 
-                    await timer(2000);
+        class Slider {
+            constructor(object) {
+                this.object = object;
+                this.currentElement;
+                this.currentKey;
+                this.objectKeys = Object.keys(object);
+                this.length = Object.keys(object).length;
+            }
+
+            isLastElement() {
+                return this.objectKeys[this.currentKey] == this.objectKeys[this.length - 1];
+            }
+
+            getFirstElement() {
+                this.currentKey = 0;
+                this.currentElement = this.objectKeys[0];
+
+                return this.object[this.currentElement];
+            }
+
+            nextElement() {
+                if (this.currentKey === undefined || this.isLastElement())
+                {
+                    return this.getFirstElement();
                 }
+
+                this.currentKey = this.currentKey + 1;
+                this.currentElement = this.objectKeys[this.currentKey];
+
+                return this.object[this.currentElement];
             }
         }
 
