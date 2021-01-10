@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Slots\Reels\Spinner;
 
+use App\Slots\Reels\Spinner\Randomizer\Randomizer;
+use App\Slots\Reels\Spinner\Seeder\Seeder;
+
 class Spinner
 {
     /**
@@ -26,12 +29,7 @@ class Spinner
     {
         $rows = [];
         foreach ($this->reels as $k => $reel) {
-            $startIndex = rand(0, count($reel) - 3);
-            $rows[$k] = [
-                $reel[$startIndex],
-                $reel[$startIndex + 1],
-                $reel[$startIndex + 2]
-            ];
+            $rows[$k] = Seeder::seed($reel, Randomizer::run($reel));
         }
 
         return $rows;
