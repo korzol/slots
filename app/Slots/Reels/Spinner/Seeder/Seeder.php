@@ -14,7 +14,7 @@ class Seeder
      */
     public static function seed(array $reel, int $startIndex): array
     {
-        if ($startIndex > (count($reel) - 3)) {
+        if ($startIndex <= (count($reel) - 3)) {
             return [
                 $reel[$startIndex],
                 $reel[$startIndex + 1],

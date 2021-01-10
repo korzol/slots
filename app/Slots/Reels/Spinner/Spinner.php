@@ -29,7 +29,7 @@ class Spinner
     {
         $rows = [];
         foreach ($this->reels as $k => $reel) {
-            $rows[$k] = Seeder::seed($reel, Randomizer::run($reel));
+            $rows[$k] = Seeder::seed($reel, Randomizer::generate($reel));
         }
 
         return $rows;

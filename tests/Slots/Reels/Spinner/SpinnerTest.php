@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace tests\Draw\Reels\Spinner;
+namespace tests\Slots\Reels\Spinner;
 
 use App\Slots\Reels\Spinner\Spinner;
 use \PHPUnit\Framework\TestCase;

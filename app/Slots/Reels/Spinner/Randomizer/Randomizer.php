@@ -11,7 +11,7 @@ class Randomizer
      * @param array<int> $reel
      * @return int
      */
-    public static function run(array $reel): int
+    public static function generate(array $reel): int
     {
         if (count($reel) >= 3) {
             return rand(0, count($reel) - 3);
