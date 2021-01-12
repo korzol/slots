@@ -1,7 +1,7 @@
 # Slots
 Simple slots (fruit) machine game
 
-It's test job
+This is test job. Proof of concept
 
 [Demo](https://www.slots.webinnolab.com/)
 
